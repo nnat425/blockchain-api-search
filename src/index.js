@@ -16,7 +16,7 @@ class App extends Component {
 
 		this.state = { transactions: [] };
 
-		Blockchain.getAddress("1BoatSLRHtKNngkdXEeobR76b53LETtpyT").then(function(data){
+		Blockchain.getAddress("1BoatSLRHtKNngkdXEeobR76b53LETtpyT").then(data => {
  			this.setState({transactions:data.txs})
  		});
 	}
@@ -24,7 +24,7 @@ class App extends Component {
 	return (
 		<div> 
 		  <SearchBar />
-		  <VideoList videos={this.state.transactions} />
+		  <TransactionList transactions={this.state.transactions} />
 		</div>
 	);  //This is jsx, babel does compiling to convert it to javascript
   }
