@@ -17,6 +17,7 @@ class App extends Component {
 		this.state = { transactions: [] };
 
 		Blockchain.getAddress("1BoatSLRHtKNngkdXEeobR76b53LETtpyT").then(data => {
+			console.log(data.txs)
  			this.setState({transactions:data.txs})
  		});
 	}
