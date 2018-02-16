@@ -2,26 +2,38 @@ import React from 'react';
 
 const TransactionListItem = ({transaction}) => {
 
+	const inputAddress = transaction.inputs
+	const outputAddress = transaction.out
+
+
+	const transactionInputAddresses = inputAddress.map((transaction,index) => {
+		return <p key={index}> {transaction.prev_out.addr} </p>
+	});
+
+	const transactionOutputAddresses = outputAddress.map((transaction,index) => {
+		return <p key={index}> {transaction.addr} </p>
+	});
+
 	//const transaction = props.transaction line 4 same as parameter passed in line 3
-	console.log(transaction);
+	//console.log(transaction);
 	return (
 		<div className="list-group-item">
 			<table className="table table-striped">
 				<tbody>
 					<tr>
-						<th colspan="3" align="left">
+						<th colSpan="3" align="left">
 							<p> Hash </p>
 						</th>
 					</tr>
 					<tr>
 						<td>
-							<p> Address </p>
+						{transactionInputAddresses}
 						</td>
 						<td>
 							<p> -----> </p>
 						</td>
 						<td>
-							<p> Address 2 </p>
+						{transactionOutputAddresses}
 							<span className="pull-right">
 								<span> 0.0123456 </span>
 							</span>
