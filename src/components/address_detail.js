@@ -1,19 +1,19 @@
 import React from 'react';
 
-constant AddressDetail = (transaction) => {
+const AddressDetail = ({addressInformation}) => {
 
 return(
-		<div className="information col-md-8">
+		<div className="information-detail col-md-8">
 			<div className="summary">
 				<h3>Summary</h3>
-				<p>Adress: {transaction.address}</p>
-				<p>Hash 160: {transaction.hash160}</p>
+				<p>Adress: {addressInformation.address}</p>
+				<p>Hash 160: {addressInformation.hash160}</p>
 			</div>
 			<div className="totalTransactions">
 				<h3>Transactions</h3>
-				<p>No. Transactions: {transaction.n_tx}</p>
-				<p>Total Received: {transaction.total_received}</p>
-				<p>Total Sent: {transaction.total_sent} </p>
+				<p>No. Transactions: {addressInformation.n_tx}</p>
+				<p>Total Received: {addressInformation.total_received}</p>
+				<p>Total Sent: {addressInformation.total_sent} </p>
 			</div>
 	</div>
 	)
