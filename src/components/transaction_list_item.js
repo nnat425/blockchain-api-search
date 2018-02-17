@@ -14,8 +14,12 @@ const TransactionListItem = ({transaction}) => {
 		return <p key={index}> {transaction.addr} </p>
 	});
 
-	//const transaction = props.transaction line 4 same as parameter passed in line 3
-	//console.log(transaction);
+
+	
+	const convertTime = String(new Date(transactionObject.time));
+	console.log((convertTime));
+	
+
 	return (
 		<div className="list-group-item">
 			<table className="table table-striped">
@@ -25,11 +29,11 @@ const TransactionListItem = ({transaction}) => {
 							<p className="transaction-hash"> {transactionObject.hash} </p>
 						</th>
 						<th colSpan="2" align="left">
-							<p className="transaction-hash"> Date </p>
+							<p className="transaction-d">{String(new Date(transactionObject.time * 1000))}</p>
 						</th>
 					</tr>
 					<tr>
-						<td>
+						<td className="inputAddresses">
 						{transactionInputAddresses}
 						</td>
 						<td>
@@ -38,7 +42,7 @@ const TransactionListItem = ({transaction}) => {
 						<td>
 						{transactionOutputAddresses}
 							<span className="pull-right">
-								<span> 0.0123456 </span>
+								<span>  </span>
 							</span>
 						</td>
 					</tr>
