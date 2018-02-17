@@ -35,7 +35,7 @@ class App extends Component {
 			Blockchain.getAddress(term).then(data => {
 				this.setState({transactions:data.txs,addressInformation:data,address:this.setInterval});
 			});
-		},5000);
+		},25000);
 	}
 
 
