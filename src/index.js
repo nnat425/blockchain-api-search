@@ -9,42 +9,48 @@ const API_URL = "https://blockchain.info"
 
 
 
-  
+
 
 class App extends Component {
 	constructor(props){
 		super(props);
 
 		this.state = { transactions: [], 
-					   addressInformation:''
-					 };
+					   addressInformation:'',
+					   address:''
+		};
 		this.addressSearch("1BoatSLRHtKNngkdXEeobR76b53LETtpyT");
-	
 	}
-
 
 
 	addressSearch(term){
 		Blockchain.getAddress(term).then(data => {
- 			this.setState({transactions:data.txs,addressInformation:data});
- 		});
+			this.setState({transactions:data.txs,addressInformation:data,address:data.address});
+		});
+	}
+
+	updateAddressInformation(term){
+		clearInterval(this.interval);
+		this.interval = setInterval( () => { 
+			Blockchain.getAddress(term).then(data => {
+				this.setState({transactions:data.txs,addressInformation:data,address:this.setInterval});
+			});
+		},5000);
 	}
 
 
 
-
-
-  render(){
-	return (
-		<div> 
-		  <SearchBar onSearchTermChange={term => this.addressSearch(term)} />
-		  <AddressDetail addressInformation={this.state.addressInformation} />
-		  <TransactionList transactions={this.state.transactions} />
-		</div>
-	);  //This is jsx, babel does compiling to convert it to javascript
-  }
+	render(){
+		return (
+			<div> 
+			<SearchBar onSearchTermChange={term => this.addressSearch(term)} updateAddress= {term => this.updateAddressInformation(term)} />
+			<AddressDetail addressInformation={this.state.addressInformation} />
+			<TransactionList transactions={this.state.transactions} />
+			</div>
+	);  
+	}
 }
 
-//Need to instantiate components before rendering to DOM
 
 ReactDOM.render(<App />, document.querySelector('.container'));
+
