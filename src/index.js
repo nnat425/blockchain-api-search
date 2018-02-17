@@ -25,6 +25,7 @@ class App extends Component {
 
 	addressSearch(term){
 		Blockchain.getAddress(term).then(data => {
+			console.log(data);
 			this.setState({transactions:data.txs,addressInformation:data,address:data.address});
 		});
 	}

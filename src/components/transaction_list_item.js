@@ -2,9 +2,9 @@ import React from 'react';
 
 const TransactionListItem = ({transaction}) => {
 
-	const inputAddress = transaction.inputs
-	const outputAddress = transaction.out
-
+	const inputAddress = transaction.inputs;
+	const outputAddress = transaction.out;
+	const transactionObject = transaction;
 
 	const transactionInputAddresses = inputAddress.map((transaction,index) => {
 		return <p key={index}> {transaction.prev_out.addr} </p>
@@ -22,7 +22,10 @@ const TransactionListItem = ({transaction}) => {
 				<tbody>
 					<tr>
 						<th colSpan="3" align="left">
-							<p> Hash </p>
+							<p className="transaction-hash"> {transactionObject.hash} </p>
+						</th>
+						<th colSpan="2" align="left">
+							<p className="transaction-hash"> Date </p>
 						</th>
 					</tr>
 					<tr>

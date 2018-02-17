@@ -1,9 +1,17 @@
 .search-bar{
 	margin:20px;
+	margin-top: 100px;
 	text-align: center;
 }
 
 .search-bar input{
-	max-width:75%;
+	width:700px;	
 }
 
+.summary,.totalTransactions{
+	padding-top: 40px;
+}
+
+.transaction-list{
+	padding-top: 50px;
+}

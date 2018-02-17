@@ -8,7 +8,7 @@ const TransactionList = (props) => {
 	});
 
 	return(
-	  <ul className="col-md-4 list-group">
+	  <ul className="transaction-list col-md-12 list-group">
 	  	{transactionItems}
 	  </ul>
 	)
