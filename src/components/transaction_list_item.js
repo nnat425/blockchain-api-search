@@ -16,19 +16,9 @@ import React from 'react';
 		return <p key={index}> {transaction.addr} </p>
 	});
 
-	 
-	const inputOrOutputAmount = () =>{
-		for(let i = 0 ; i < transactionObject.out.length ; i++){
-			if(addressObject.address == transactionObject.out[i].addr){
-				return <span className="outAddressValue"> {transactionObject.out[i].value/100000000 + " BTC"} </span>;
-			}
-		}
-		for(let i = 0 ; i < transactionObject.inputs.length ; i++){
-		   if(addressObject.address == transactionObject.inputs[i].prev_out.addr){
-		   		 return <span className="inputAddressValue"> {"-" + transactionObject.inputs[i].prev_out.value/100000000 + " BTC"} </span> ;
-		   	}
-		}
-	}
+	const transactionAmount = outputAddress.map((transaction,index) => {
+		return <p key={index}> {transaction.value/100000000} </p>
+	});
 
 	return (
 		<div className="list-group-item">
@@ -52,8 +42,11 @@ import React from 'react';
 						<td className="outputAddresses">
 							{transactionOutputAddresses}
 						</td>
+						<td> 
+							{transactionAmount}
+						</td>
+						
 						<td >
-						    {inputOrOutputAmount()}
 						</td>
 					</tr>
 				</tbody>

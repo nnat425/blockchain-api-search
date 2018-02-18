@@ -35,8 +35,6 @@ class App extends Component {
 		},25000);
 	}
 
-
-
 	render(){
 		return (
 			<div> 
