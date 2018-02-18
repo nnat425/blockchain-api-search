@@ -20,12 +20,12 @@ import React from 'react';
 	const inputOrOutputAmount = () =>{
 		for(let i = 0 ; i < transactionObject.out.length ; i++){
 			if(addressObject.address == transactionObject.out[i].addr){
-				return transactionObject.out[i].value;
+				return <span className="outAddressValue"> {transactionObject.out[i].value/100000000 + " BTC"} </span>;
 			}
 		}
 		for(let i = 0 ; i < transactionObject.inputs.length ; i++){
 		   if(addressObject.address == transactionObject.inputs[i].prev_out.addr){
-		   		 return transactionObject.inputs[i].prev_out.value;
+		   		 return <span className="inputAddressValue"> {"-" + transactionObject.inputs[i].prev_out.value/100000000 + " BTC"} </span> ;
 		   	}
 		}
 	}
@@ -46,16 +46,16 @@ import React from 'react';
 					</tr>
 					<tr>
 						<td className="inputAddresses">
-						{transactionInputAddresses}
+							{transactionInputAddresses}
 						</td>
 						<td>
 							<p> &rarr; </p>
 						</td>
 						<td className="outputAddresses">
-						{transactionOutputAddresses}
-							<span className="pull-right">
-								<span>{inputOrOutputAmount()}</span>
-							</span>
+							{transactionOutputAddresses}
+						</td>
+						<td >
+						    {inputOrOutputAmount()}
 						</td>
 					</tr>
 				</tbody>

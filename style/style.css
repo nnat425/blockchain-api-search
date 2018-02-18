@@ -23,3 +23,11 @@
 .outputAddresses{
 	font-size:13px;
 }
+
+.outAddressValue{
+	color:green;
+}
+
+.inputAddressValue{
+	color:red;
+}

@@ -7,7 +7,7 @@ return(
 			<div className="row">
 				<div className="summary col-lg-6">
 					<h3>Summary</h3>
-					<p>Adress: {addressInformation.address}</p>
+					<p>Address: {addressInformation.address}</p>
 					<p>Hash 160: {addressInformation.hash160}</p>
 				</div>
 				<div className="totalTransactions col-lg-6">

@@ -44,6 +44,7 @@ class App extends Component {
 	render(){
 		return (
 			<div> 
+			<h1> Blockchain Challenge </h1>
 			<SearchBar onSearchTermChange={term => this.addressSearch(term)} updateAddress= {term => this.updateAddressInformation(term)} />
 			<AddressDetail addressInformation={this.state.addressInformation} />
 			<TransactionList transactions={this.state.transactions} addressData={this.state.addressInformation} />
