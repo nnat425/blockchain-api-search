@@ -4,7 +4,7 @@ import TransactionListItem from './transaction_list_item';
 const TransactionList = (props) => {
 
 	const transactionItems = props.transactions.map((transaction) => {
-		return <TransactionListItem key={transaction.hash} transaction={transaction} />
+		return <TransactionListItem key={transaction.hash} transaction={transaction} addressData={props.addressData} />
 	});
 
 	return(

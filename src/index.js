@@ -46,7 +46,7 @@ class App extends Component {
 			<div> 
 			<SearchBar onSearchTermChange={term => this.addressSearch(term)} updateAddress= {term => this.updateAddressInformation(term)} />
 			<AddressDetail addressInformation={this.state.addressInformation} />
-			<TransactionList transactions={this.state.transactions} />
+			<TransactionList transactions={this.state.transactions} addressData={this.state.addressInformation} />
 			</div>
 	);  
 	}

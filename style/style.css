@@ -15,3 +15,11 @@
 .transaction-list{
 	padding-top: 50px;
 }
+
+.inputAddresses{
+	font-size:13px;
+}
+
+.outputAddresses{
+	font-size:13px;
+}

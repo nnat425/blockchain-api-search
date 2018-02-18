@@ -1,10 +1,12 @@
 import React from 'react';
 
-const TransactionListItem = ({transaction}) => {
+	const TransactionListItem = (props) => {
 
-	const inputAddress = transaction.inputs;
-	const outputAddress = transaction.out;
-	const transactionObject = transaction;
+
+	const addressObject = props.addressData;
+	const inputAddress = props.transaction.inputs;
+	const outputAddress = props.transaction.out;
+	const transactionObject = props.transaction;
 
 	const transactionInputAddresses = inputAddress.map((transaction,index) => {
 		return <p key={index}> {transaction.prev_out.addr} </p>
@@ -14,11 +16,21 @@ const TransactionListItem = ({transaction}) => {
 		return <p key={index}> {transaction.addr} </p>
 	});
 
+	 
+	const inputOrOutputAmount = () =>{
+		for(let i = 0 ; i < transactionObject.out.length ; i++){
+			if(addressObject.address == transactionObject.out[i].addr){
+				return transactionObject.out[i].value;
+			}
+		}
+		for(let i = 0 ; i < transactionObject.inputs.length ; i++){
+		   if(addressObject.address == transactionObject.inputs[i].prev_out.addr){
+		   		 return transactionObject.inputs[i].prev_out.value;
+		   	}
+		}
+	}
 
-	
-	const convertTime = String(new Date(transactionObject.time));
-	console.log((convertTime));
-	
+
 
 	return (
 		<div className="list-group-item">
@@ -37,12 +49,12 @@ const TransactionListItem = ({transaction}) => {
 						{transactionInputAddresses}
 						</td>
 						<td>
-							<p> -----> </p>
+							<p> &rarr; </p>
 						</td>
-						<td>
+						<td className="outputAddresses">
 						{transactionOutputAddresses}
 							<span className="pull-right">
-								<span>  </span>
+								<span>{inputOrOutputAmount()}</span>
 							</span>
 						</td>
 					</tr>
