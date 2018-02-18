@@ -30,8 +30,6 @@ import React from 'react';
 		}
 	}
 
-
-
 	return (
 		<div className="list-group-item">
 			<table className="table table-striped">

@@ -7,10 +7,6 @@ import AddressDetail from './components/address_detail';
 
 const API_URL = "https://blockchain.info" 
 
-
-
-
-
 class App extends Component {
 	constructor(props){
 		super(props);
@@ -26,7 +22,7 @@ class App extends Component {
 	addressSearch(term){
 		Blockchain.getAddress(term).then(data => {
 			console.log(data);
-			this.setState({transactions:data.txs,addressInformation:data,address:data.address});
+			this.setState({transactions:data.txs,addressInformation:data});
 		});
 	}
 
@@ -34,7 +30,7 @@ class App extends Component {
 		clearInterval(this.interval);
 		this.interval = setInterval( () => { 
 			Blockchain.getAddress(term).then(data => {
-				this.setState({transactions:data.txs,addressInformation:data,address:this.setInterval});
+				this.setState({transactions:data.txs,addressInformation:data});
 			});
 		},25000);
 	}
