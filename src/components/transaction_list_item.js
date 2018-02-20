@@ -17,7 +17,7 @@ import React from 'react';
 	});
 
 	const transactionAmount = outputAddress.map((transaction,index) => {
-		return <p key={index}> {transaction.value/100000000} </p>
+		return <p key={index}> {transaction.value/100000000} BTC </p>
 	});
 
 	return (
